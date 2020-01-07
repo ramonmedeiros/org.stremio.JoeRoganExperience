@@ -1,0 +1,19 @@
+{
+    "id": "org.stremio.JoeRoganExperience"
+    "version": "1.0.0",
+
+    "name": "The Joe Rogan Experience",
+    "description": "Joe Rogan hosts long form conversations with friends and guests that include comedians, actors, musicians, MMA instructors and commentators, authors, artists, and porn stars.",
+
+    "types": ["series"],
+
+    "catalogs": [
+            {"type": "series", "id": "tt6567314", "name": "The Joe Rogan Experience"}
+    ],
+
+    "resources": [
+        "catalog",
+        {"name": "meta", "types": ["series"], "idPrefixes": ["tt", "hpy"]},
+        {"name": "stream", "types": ["series"], "idPrefixes": ["tt", "hpy"]}
+    ]
+}

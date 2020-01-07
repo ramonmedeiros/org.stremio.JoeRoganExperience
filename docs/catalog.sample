@@ -1,0 +1,24 @@
+{
+  "series": [
+    {
+      "id": "tt0475900",
+      "name": "Anthony Bourdain: No Reservations",
+      "description": "Anthony Bourdain, chef, writer, traveler, visits places all around the world sampling various foods.",
+      "releaseInfo": "2005-2012",
+      "logo": "https://i1.wp.com/www.renewcanceltv.com/wp-content/uploads/2019/05/Anthony_Bourdain_No_Reservations_hero.jpg",
+      "imdbRating": 8.4,
+      "genres": [
+        "Adventure",
+        "Reality-TV"
+      ],
+      "videos": [
+        {
+          "episode": 9,
+          "id": "tt0475900:8:9",
+          "season": 8,
+          "title": "Austin"
+        }
+      ],
+    }
+  ]
+}
