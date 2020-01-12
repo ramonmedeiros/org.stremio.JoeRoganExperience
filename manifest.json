@@ -1,0 +1,39 @@
+{
+  "catalogs": [
+    {
+      "id": "tt6567314",
+      "name": "The Joe Rogan Experience",
+      "type": "series"
+    }
+  ],
+  "description": "JRE from Youtube",
+  "id": "org.stremio.JoeRoganExperience",
+  "name": "JoeRoganExperience Addon",
+  "resources": [
+    "catalog",
+    {
+      "idPrefixes": [
+        "tt",
+        "hpy"
+      ],
+      "name": "meta",
+      "types": [
+        "series"
+      ]
+    },
+    {
+      "idPrefixes": [
+        "tt",
+        "hpy"
+      ],
+      "name": "stream",
+      "types": [
+        "series"
+      ]
+    }
+  ],
+  "types": [
+    "series"
+  ],
+  "version": "1.0.0"
+}
