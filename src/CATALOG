@@ -8,7 +8,8 @@
       "logo": "https://m.media-amazon.com/images/M/MV5BMWY1NmFiOGQtMDM5Zi00M2RjLTk1ZjYtMDA5MmU4ZDBmZDA0XkEyXkFqcGdeQXVyNDc1ODgwOA@@._V1_SX300.jpg",
       "imdbRating": 8.6,
       "genres": [
-        "Comedy, Talk-Show"
+        "Comedy",
+	"Talk-Show"
       ],
       "videos": [
         {
