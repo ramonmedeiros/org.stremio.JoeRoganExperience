@@ -5,38 +5,31 @@
 # https://developers.google.com/explorer-help/guides/code_samples#python
 
 import os
+import json
+import requests
+import logging
 
-import google_auth_oauthlib.flow
-import googleapiclient.discovery
-import googleapiclient.errors
+URL = "https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails%2Csnippet&maxResults=50&playlistId=UUzQUP1qoWDoEbmsQxvdjxgQ&alt=json&key="
 
-scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
+def save(obj, number):
+    with open(f"resp{number}.json", "w") as fd:
+        fd.write(json.dumps(obj))
+    logging.warn(f"File resp{number}.json")
 
 def main():
-    # Disable OAuthlib's HTTPS verification when running locally.
-    # *DO NOT* leave this option enabled in production.
-    os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
-    api_service_name = "youtube"
-    api_version = "v3"
-    client_secrets_file = "YOUR_CLIENT_SECRET_FILE.json"
+    key = ""
+    req = requests.get(URL + key)
+    save(req.json()["items"], "1")
+    nextPageToken = req.json().get("nextPageToken")
+    
+    counter = 1
+    while nextPageToken is not None:
+        req = requests.get(URL + key + "&pageToken=" + nextPageToken)
+        counter = counter + 1
+        save(req.json()["items"], str(counter))
+        nextPageToken = req.json().get("nextPageToken")
 
-    # Get credentials and create an API client
-    flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(
-        client_secrets_file, scopes)
-    credentials = flow.run_console()
-    youtube = googleapiclient.discovery.build(
-        api_service_name, api_version, credentials=credentials)
-
-    request = youtube.playlistItems().list(
-        part="contentDetails,snippet",
-        maxResults=50,
-        playlistId="UUzQUP1qoWDoEbmsQxvdjxgQ",
-        alt="json"
-    )
-    response = request.execute()
-
-    print(response)
 
 if __name__ == "__main__":
     main()
