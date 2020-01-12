@@ -33,13 +33,13 @@ for s in eps.keys():
             logging.warning(f"No video found for title: {eps[s][e]['title']}")
             zero = zero +1
             continue
-
-        id = f"tt6567314:{s}:{e}"
+        year = eps[s][e]["year"]
+        id = f"tt6567314:{year}:{e}"
         videoId = item["snippet"]["resourceId"]["videoId"]
-        streams["series"][id] = {
-            "title": "Youtube Id",
+        streams["series"][id] = [{
+            "title": "Youtube",
             "ytId": videoId
-        }
+        }]
 
 import pdb;pdb.set_trace()
 
