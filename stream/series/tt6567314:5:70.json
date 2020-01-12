@@ -1,6 +1,8 @@
 {
-  "streams": {
-    "title": "Youtube Id",
-    "ytId": "E7-GjzIUs14"
-  }
+  "streams": [
+    {
+      "title": "Youtube Id",
+      "ytId": "E7-GjzIUs14"
+    }
+  ]
 }
