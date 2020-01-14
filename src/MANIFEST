@@ -5,15 +5,13 @@
     "name": "JoeRoganExperience Addon",
     "description": "JRE from Youtube",
 
-    "types": ["series"],
+    "types": ["channel"],
 
     "catalogs": [
-            {"type": "series", "id": "tt6567314", "name": "The Joe Rogan Experience"}
+            {"type": "channel",
+             "id": "tt6567314",
+             "name": "The Joe Rogan Experience"}
     ],
 
-    "resources": [
-        "catalog",
-        {"name": "meta", "types": ["series"], "idPrefixes": ["tt", "hpy"]},
-        {"name": "stream", "types": ["series"], "idPrefixes": ["tt", "hpy"]}
-    ]
+    "resources": ["catalog", "meta"]
 }
