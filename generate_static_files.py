@@ -6,7 +6,7 @@ import logging
 
 # This is template we'll be using to construct URL for the item poster
 METAHUB_URL = 'https://images.metahub.space/poster/medium/{}/img'
-OPTIONAL_META = ["posterShape", "background", "logo", "videos", "description", "releaseInfo", "imdbRating", "director", "cast",
+OPTIONAL_META = ["posterShape", "background", "logo", "videos", "description", "releaseInfo", "imdbRating", "director", "cast", "thumbnail",
                  "dvdRelease", "released", "inTheaters", "certification", "runtime", "language", "country", "awards", "website", "isPeered"]
 
 # generate paths
@@ -16,7 +16,6 @@ STREAM = "stream"
 META = "meta"
 
 CATALOG_DIR = os.path.join(STATIC_FILES_PATH, CATALOG)
-STREAM_DIR = os.path.join(STATIC_FILES_PATH, STREAM)
 META_DIR = os.path.join(STATIC_FILES_PATH, META)
 
 class GenerateStaticFiles():
@@ -24,7 +23,6 @@ class GenerateStaticFiles():
     def __init__(self):
         self.manifest = self.getFiles("src/MANIFEST")
         self.catalog = self.getFiles("src/CATALOG")
-        self.streams = self.getFiles("src/STREAMS")
         self.types = self.manifest.get("types")
         self.createFileStructure()
 
@@ -33,11 +31,6 @@ class GenerateStaticFiles():
         # create catalog
         for t in self.types:
             os.makedirs(os.path.join(CATALOG_DIR, t),
-                        exist_ok=True)
-
-        # create stream
-        for t in self.types:
-            os.makedirs(os.path.join(STREAM_DIR, t),
                         exist_ok=True)
 
         # create meta
@@ -51,7 +44,7 @@ class GenerateStaticFiles():
                           sort_keys=True,
                           indent=2,
                           separators=(',', ': '))
-    
+
     @staticmethod
     def getFiles(path):
         with open(path) as fd:
@@ -87,7 +80,7 @@ class GenerateStaticFiles():
                                     os.path.join(CATALOG_DIR,
                                                  t,
                                                  item['id'] + ".json"))
- 
+
     def generateMeta(self):
         # iterate over type
         for t in self.types:
@@ -106,18 +99,10 @@ class GenerateStaticFiles():
                                                  "meta",
                                                  t,
                                                  item['id'] + ".json"))
- 
-    def generateStream(self):
-        for t in self.types:
-            for id in self.streams[t]:
-                self.saveStaticFile({'streams': self.streams[t][id]},
-                                    os.path.join(STREAM_DIR,
-                                                 t,
-                                                 id + ".json"))
- 
+
+
     def main(self):
         self.generateManifest()
         self.generateCatalog()
         self.generateMeta()
-        self.generateStream()
 
